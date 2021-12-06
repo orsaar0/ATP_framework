@@ -29,7 +29,7 @@ public class RegisterWithPreferanceAction extends Action<Boolean> {
 
     @Override
     protected void start() {
-        List<String> coursesList = Arrays.asList(courses);
+        List<String> coursesList = new ArrayList(Arrays.asList(courses));
         if(coursesList.isEmpty()) {
             complete(false);
             return;

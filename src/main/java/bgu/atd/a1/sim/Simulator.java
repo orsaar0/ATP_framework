@@ -95,7 +95,7 @@ public class Simulator {
         actorThreadPool.start();
         start();
         Map<String, PrivateState> simulationResult;
-        simulationResult = end();
+//        simulationResult = end();
 
             try{
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -253,7 +253,7 @@ public class Simulator {
 
             case "Register With Preferences":
                 student = actionObject.get("Student").getAsString();
-                JsonArray coursesJsonArray = actionObject.get("Conditions").getAsJsonArray();
+                JsonArray coursesJsonArray = actionObject.get("Preferences").getAsJsonArray();
                 String[] courses = new String[coursesJsonArray.size()];
                 for (int i = 0; i < coursesJsonArray.size(); i++) {
                     courses[i] = coursesJsonArray.get(i).getAsString();

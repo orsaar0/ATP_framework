@@ -82,6 +82,8 @@ public class ActorThreadPool {
 		actionsByActorID.putIfAbsent(actorId, new ConcurrentLinkedQueue<>());
 		locksByID.putIfAbsent(actorId, new ReentrantLock());
 
+		currentActions.incrementAndGet();
+
 //		currentActions is decremented last (added again), so the program shuts down gracefully
 		action.getResult().subscribe(() ->
 				action.getResult().subscribe(() -> {
@@ -90,7 +92,6 @@ public class ActorThreadPool {
 				}));
 
 		actionsByActorID.get(actorId).add(action);
-		currentActions.incrementAndGet();
 		System.out.println("submit: Number of actions after increment: " + currentActions.get());
 
 //		threadsLock.lock();
