@@ -34,6 +34,7 @@ public class CloseCourseAction extends Action<String> {
             if(actions.get(0).getResult().get()) {
                 complete("Course " + course + " was removed from " + department + " department successfully");
                 System.out.println("Course " + course + " was removed from " + department + " department successfully");
+                privateState.addRecord(getActionName());
             }
             else {
                 complete("Course " + course + " was NOT removed from " + department + " department");
@@ -42,6 +43,5 @@ public class CloseCourseAction extends Action<String> {
         });
         sendMessage(closeCourse, course, new CoursePrivateState());
 
-        privateState.addRecord(getActionName());
     }
 }
